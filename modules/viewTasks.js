@@ -11,7 +11,11 @@ export default (tasks) => {
   tasks.forEach((task) => {
     const listItem = document.createElement('li');
     listItem.className = 'list-item';
-    listItem.innerHTML = `<input class="check-box" type="checkbox"><p class="description">${task.description}</p><a class="delete-icon"><img class="delete-img" src="${trash}" alt="trash"></a>`;
+    listItem.innerHTML = `<input class="check-box" type="checkbox" ${
+      task.completed ? 'checked' : ''
+    }><p class="description">${
+      task.description
+    }</p><a class="delete-icon"><img class="delete-img" src="${trash}" alt="trash"></a>`;
     container.appendChild(listItem);
   });
 

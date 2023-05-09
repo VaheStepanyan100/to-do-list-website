@@ -3,8 +3,10 @@ import viewTasks from '../modules/viewTasks.js';
 import addNewTask from '../modules/addNewTask.js';
 import deleteTask from '../modules/deleteTask.js';
 import edittask from '../modules/edittask.js';
+import taskStatusUpdate from '../modules/taskStatusUpdate.js';
+import clearCompletedTasks from '../modules/clearCompletedTasks.js';
 
-const tasks = JSON.parse(localStorage.getItem('toDoList')) || [];
+let tasks = JSON.parse(localStorage.getItem('toDoList')) || [];
 window.addEventListener('load', viewTasks(tasks));
 const input = document.querySelector('.input');
 input.addEventListener('keypress', (e) => {
@@ -48,4 +50,18 @@ document.addEventListener('click', (e) => {
       });
     }
   });
+
+  const checkBoxes = document.querySelectorAll('.check-box');
+  checkBoxes.forEach((checkBox, index) => {
+    checkBox.addEventListener('change', () => {
+      taskStatusUpdate(tasks, index);
+      viewTasks(tasks);
+    });
+  });
+
+  const clearBtn = document.querySelector('.clear');
+  if (e.target === clearBtn) {
+    tasks = clearCompletedTasks(tasks);
+    viewTasks(tasks);
+  }
 });
