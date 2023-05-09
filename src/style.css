@@ -24,7 +24,13 @@ li {
 }
 
 .input {
+  font-size: 1.2rem;
+  width: 100%;
   border: none;
+}
+
+.input:focus {
+  outline: none;
 }
 
 .input::placeholder {
@@ -34,6 +40,9 @@ li {
 .list-item {
   border-bottom: 1px solid #c8c8c8;
   padding: 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .check-box {
@@ -47,4 +56,24 @@ li {
   padding: 1rem 0;
   text-decoration: none;
   text-align: center;
+}
+
+.delete-img {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.description {
+  width: 100%;
+  font-size: 1.5rem;
+  border: 0;
+}
+
+.description:focus {
+  outline: none;
+}
+
+.edit {
+  background-color: #fffecb;
 }

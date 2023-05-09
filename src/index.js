@@ -1,34 +1,51 @@
 import './style.css';
+import viewTasks from '../modules/viewTasks.js';
+import addNewTask from '../modules/addNewTask.js';
+import deleteTask from '../modules/deleteTask.js';
+import edittask from '../modules/edittask.js';
 
-const tasks = [
-  {
-    description: 'Learn Html',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Learn CSS',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Learn JavaScript',
-    completed: false,
-    index: 0,
-  },
-];
+const tasks = JSON.parse(localStorage.getItem('toDoList')) || [];
+window.addEventListener('load', viewTasks(tasks));
+const input = document.querySelector('.input');
+input.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' && input.value !== '') {
+    const description = input.value;
+    tasks.push(addNewTask(description, tasks.length));
+    viewTasks(tasks);
+    input.value = '';
+  }
+});
 
-const viewTasks = () => {
-  const container = document.querySelector('.task-list');
-
-  tasks.sort((a, b) => a.index - b.index);
-
-  tasks.forEach((task) => {
-    const listItem = document.createElement('li');
-    listItem.className = 'list-item';
-    listItem.innerHTML = `<input class="check-box" type="checkbox">${task.description}`;
-    container.appendChild(listItem);
+document.addEventListener('click', (e) => {
+  const deleteIcons = document.querySelectorAll('.delete-img');
+  deleteIcons.forEach((icon, id) => {
+    if (e.target === icon) {
+      deleteTask(tasks, id);
+      viewTasks(tasks);
+    }
   });
-};
 
-window.addEventListener('load', viewTasks);
+  const descriptions = document.querySelectorAll('.description');
+  descriptions.forEach((task, id) => {
+    if (e.target === task) {
+      const parentLi = e.target.parentNode;
+      parentLi.classList.add('edit');
+      const oldTask = tasks[id]?.description;
+      const inputField = document.createElement('input');
+      inputField.type = 'text';
+      inputField.className = 'description edit';
+      inputField.value = oldTask;
+      task.innerText = '';
+      task.appendChild(inputField);
+      inputField.focus();
+
+      inputField.addEventListener('blur', () => {
+        const newTask = inputField.value;
+        task.removeChild(inputField);
+        task.innerText = newTask;
+        edittask(tasks, id, newTask);
+        viewTasks(tasks);
+      });
+    }
+  });
+});
