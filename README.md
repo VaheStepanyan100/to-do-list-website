@@ -2,7 +2,7 @@
 
 # 📗 Table of Contents
 
-- [� Table of Contents](#-table-of-contents)
+- [📗 Table of Contents](#-table-of-contents)
 - [📖 \[To-do-list\] ](#-to-do-list-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
@@ -47,7 +47,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://VaheStepanyan100.github.io/to-do-list-website)
+- [Live Demo Link](https://VaheStepanyan100.github.io/to-do-list-website/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
