@@ -5,4 +5,5 @@ export default (tasks, id) => {
     tasks[i].id = i;
     i += 1;
   }
+  return tasks;
 };
