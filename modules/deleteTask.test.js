@@ -1,4 +1,5 @@
 import deleteTask from './deleteTask.js';
+
 describe('Delete task function', () => {
   test('Delete a task from the tasks array', () => {
     const tasksArray = [
