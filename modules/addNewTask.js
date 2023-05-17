@@ -1,8 +1,10 @@
-export default (taskDescription, arrayLength) => {
+export default (taskDescription, tasks) => {
   const newTask = {
     description: taskDescription,
     completed: false,
-    id: arrayLength,
+    id: tasks.length,
   };
-  return newTask;
+  tasks.push(newTask);
+
+  return tasks;
 };
