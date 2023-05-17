@@ -12,8 +12,7 @@ const input = document.querySelector('.input');
 input.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && input.value !== '') {
     const description = input.value;
-    tasks.push(addNewTask(description, tasks.length));
-    viewTasks(tasks);
+    viewTasks(addNewTask(description, tasks));
     input.value = '';
   }
 });
@@ -22,8 +21,7 @@ document.addEventListener('click', (e) => {
   const deleteIcons = document.querySelectorAll('.delete-img');
   deleteIcons.forEach((icon, id) => {
     if (e.target === icon) {
-      deleteTask(tasks, id);
-      viewTasks(tasks);
+      viewTasks(deleteTask(tasks, id));
     }
   });
 
