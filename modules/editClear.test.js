@@ -59,7 +59,7 @@ describe('Edit task', () => {
   });
   test('Edit task and update tasks array', () => {
     tasks.push(newTask);
-    edittask(tasks, 0, 'Go shopping'); 
+    edittask(tasks, 0, 'Go shopping');
     expect(tasks[0].description).toBe('Go shopping');
   });
 });
