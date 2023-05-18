@@ -1,4 +1,5 @@
 import trash from '../assets/trash.svg';
+import list from './list.js';
 
 export default (tasks) => {
   const container = document.querySelector('.task-list');
@@ -9,14 +10,7 @@ export default (tasks) => {
   tasks.sort((a, b) => a.id - b.id);
 
   tasks.forEach((task) => {
-    const listItem = document.createElement('li');
-    listItem.className = 'list-item';
-    listItem.innerHTML = `<input class="check-box" type="checkbox" ${
-      task.completed ? 'checked' : ''
-    }><p class="description">${
-      task.description
-    }</p><a class="delete-icon"><img class="delete-img" src="${trash}" alt="trash"></a>`;
-    container.appendChild(listItem);
+    list(container, task, trash);
   });
 
   localStorage.setItem('toDoList', JSON.stringify(tasks));
