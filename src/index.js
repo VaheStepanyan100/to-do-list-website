@@ -30,19 +30,9 @@ document.addEventListener('click', (e) => {
     if (e.target === task) {
       const parentLi = e.target.parentNode;
       parentLi.classList.add('edit');
-      const oldTask = tasks[id]?.description;
-      const inputField = document.createElement('input');
-      inputField.type = 'text';
-      inputField.className = 'description edit';
-      inputField.value = oldTask;
-      task.innerText = '';
-      task.appendChild(inputField);
-      inputField.focus();
-
-      inputField.addEventListener('blur', () => {
-        const newTask = inputField.value;
-        task.removeChild(inputField);
-        task.innerText = newTask;
+      task.addEventListener('blur', () => {
+        const newTask = task.textContent;
+        task.textContent = newTask;
         edittask(tasks, id, newTask);
         viewTasks(tasks);
       });
