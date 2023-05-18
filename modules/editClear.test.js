@@ -57,9 +57,9 @@ describe('Edit task', () => {
     taskStatusUpdate(tasks, 0);
     expect(tasks[0].completed).toBe(true);
   });
-  // test('Edit task and update tasks array', () => {
-  //   tasks.push(newTask);
-  //   edittask(tasks, 0, 'Go shopping');
-  //   expect(tasks[0].description).toBe('Go shopping');
-  // });
+  test('Edit task and update tasks array', () => {
+    tasks.push(newTask);
+    edittask(tasks, 0, 'Go shopping'); 
+    expect(tasks[0].description).toBe('Go shopping');
+  });
 });
